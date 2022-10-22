@@ -6,13 +6,26 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "dev": "npx expo start --tunnel"
   },
   "dependencies": {
+    "@expo/webpack-config": "^0.17.0",
+    "@react-native-async-storage/async-storage": "^1.17.10",
+    "@react-native-community/netinfo": "9.3.0",
+    "@react-navigation/bottom-tabs": "^6.4.0",
+    "@react-navigation/native": "^6.0.13",
+    "@react-navigation/stack": "^6.3.2",
+    "babel-plugin-inline-dotenv": "^1.7.0",
     "expo": "~46.0.13",
     "expo-status-bar": "~1.4.0",
+    "firebase": "^9.12.1",
     "react": "18.0.0",
-    "react-native": "0.69.6"
+    "react-dom": "18.0.0",
+    "react-native": "0.69.6",
+    "react-native-get-random-values": "^1.8.0",
+    "react-native-uuid": "^2.0.1",
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
