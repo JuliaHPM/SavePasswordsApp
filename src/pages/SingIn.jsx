@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import Constants from 'expo-constants';
@@ -15,11 +15,17 @@ export function SignIn({ navigation }) {
     const { signIn } = useAuth();
 
     async function handleSignIn() {
-        try {
-            await signIn(email, password);
-        } catch (error) {
-            console.log(error.message);
+        if (email && password) {
+            try {
+                await signIn(email, password);
+            } catch (error) {
+                console.log(error.message);
+                Alert.alert("Erro", "Falha ao realizar login");
+            }
+        }else{
+            Alert.alert("Atenção", "Preencha todos os campos de login!");
         }
+
 
     }
 
