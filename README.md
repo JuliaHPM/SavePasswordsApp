@@ -20,17 +20,14 @@ Desenvolvida com React Native e Firebase.
 ![Image](./img/TelaHome.png) -->
 
 ### Home
-<!-- ![Image](./img/TelaHome.jpg#img) -->
-<img src="./img/TelaHome.jpg" alt="TelaHome" title="TelaHome" width="150" height="100" /> 
+![Image](./img/TelaHome.jpg | width=100)
+
 
 ### Registro Login
-![Image](./img/TelaRegistroLogin.jpg#img)
+<!-- ![Image](./img/TelaRegistroLogin.jpg) -->
+<img src="/JuliaHPM/SavePasswordsApp/raw/main/img/TelaRegistroLogin.jpg#img" alt="TelaHome" title="TelaHome" width="150" /> 
+<!-- height="100"  -->
 
 
 <!-- Links:
 [Nomes de icones expo vector-icons](https://icons.expo.fyi ) -->
-
-img[src*="#img"] {
-   width:150px;
-   height:100px;
-}
