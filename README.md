@@ -20,13 +20,13 @@ Desenvolvida com React Native e Firebase.
 ![Image](./img/TelaHome.png) -->
 
 ### Home
-![Image](./img/TelaHome.jpg|width=100px)
-
+<!-- ![Image](./img/TelaHome.jpg|width=100px) -->
+<img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaHome.jpg" alt="TelaHome" title="TelaHome" width="250" /> 
 
 ### Registro Login
-<!-- ![Image](./img/TelaRegistroLogin.jpg) -->
-<img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaRegistroLogin.jpg" alt="TelaHome" title="TelaHome" width="150" /> 
-<!-- height="100"  -->
+
+<img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaRegistroLogin.jpg" alt="TelaRegistroLogin" title="TelaRegistroLogin" width="250" /> 
+
 
 
 <!-- Links:
