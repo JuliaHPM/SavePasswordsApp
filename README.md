@@ -20,7 +20,8 @@ Desenvolvida com React Native e Firebase.
 ![Image](./img/TelaHome.png) -->
 
 ### Home
-![Image](./img/TelaHome.jpg =250x)
+<!-- ![Image](./img/TelaHome.jpg =250x) -->
+![](./img/TelaHome.jpg =100x20)
 
 ### Registro Login
 ![Image](./img/TelaRegistroLogin.jpg =250x)
