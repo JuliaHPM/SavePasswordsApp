@@ -1,62 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import { InputPassword } from '../components/InputPassword';
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import Constants from 'expo-constants';
 import { Title } from '../components/Title';
 import { useAuth } from '../hooks/auth';
 import { useStorage } from '../contexts/storageContext';
-import { storageKey } from '../utils/storageKey';
 import { useConnection } from '../hooks/useConnection';
 import uuid from 'react-native-uuid';
-import { db } from '../config/firebase';
-import { collection, addDoc } from "firebase/firestore";
+// import { db, loginsDatabase, saveOnFirestore } from '../config/firebase';
+// import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import CryptoES from "crypto-es";
 
 export function Register({ navigation }) {
-
     const { user } = useAuth();
-    const { storageData } = useStorage();
 
-    const connected = useConnection();
+    const { storageData, storageKeyData, saveStorage } = useStorage();
 
     const [service, setService] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const asyncStorageKey = storageKey();
-
+    
     async function handleRegister() {
         if (!service || !username || !password) {
-            return
+            return Alert.alert("Aviso", "Preencha todos os campos!");
         } else {
+            const encrypted = CryptoES.AES.encrypt(password, toString(user.password)).toString();
+            // const decrypted = CryptoES.AES.decrypt(encrypted, toString(user.password));
+
+            // console.log("encripted: ", encrypted);
+            // console.log("decrypted: ", decrypted.toString(CryptoES.enc.Utf8));
+
             const newData = {
-                // id: uuid.v4(),//o firestore já cria um id
+                id: uuid.v4(),
                 userId: user.id,
                 service: service,
                 username: username,
-                password: password,
+                password: encrypted,
             }
             // console.log(newData);
 
+            const newListData = [
+                ...storageData,
+                newData
+            ]
 
-            if (connected) { //salvar no firestore se conectado:
-                saveOnFirestore(newData);
-            } else {//quando não estiver conectado, salvar no storage e depois quando voltar a conexão, salvar no banco
-                // pegar o que já tem no storage e adicionar mais
-                // const response = await AsyncStorage.getItem(asyncStorageKey);
-                // const parsedData = response ? JSON.parse(response) : []; //se não tiver nenhum registro, vem vazio
+            //salvar no storage
+            saveStorage(storageKeyData, newListData);
 
-                //cria uma nova lista com os dados que já estavam no storage e os novos dados
-                const newListData = [
-                    ...storageData,
-                    newData
-                ]
-
-                //salva a nova lista no storage
-                await AsyncStorage.setItem(asyncStorageKey, JSON.stringify(newListData));
-            }
             //limpa campos
             setService('');
             setUsername('');
@@ -66,27 +59,7 @@ export function Register({ navigation }) {
         }
     }
 
-    async function saveOnFirestore(data) {
-        await addDoc(collection(db, "logins"), data)
-            .then((response) => {
-                console.log("dados salvos: ", response);
-            }).catch((error) => {
-                console.log(error);
-            });
-    }
 
-    useEffect(() => {
-        async function saveOfflineData() {
-            if (storageData && connected) { //se tiver dados e se tiver conectado salvar na api
-                storageData.forEach(data => {
-                    saveOnFirestore(data)
-                        .then(() => AsyncStorage.removeItem(asyncStorageKey)) //removeAll - remover os dados do storage
-                });
-            }
-        }
-
-        saveOfflineData();
-    }, [connected]); //verificar sempre que mudar a conexão
 
     return (
         <View style={styles.container}>
@@ -134,3 +107,30 @@ const styles = StyleSheet.create({
         padding: 25
     },
 });
+
+
+
+    // //dados que vão ser salvos quando voltar a internet
+    // const connected = useConnection();
+
+    // const dadosDoBanco = loginsDatabase();
+    // console.log("dados do banco", dadosDoBanco);
+    // console.log("dados do storage", storageData);
+
+    // if (connected) { //salvar no firestore se conectado:
+            //     // saveOnFirestore(newData);
+            // } else {//quando não estiver conectado, salvar no storage e depois quando voltar a conexão, salvar no banco
+            //     // pegar o que já tem no storage e adicionar mais
+            //     // const storageNewDataOffline = loadStorageData(storageKeyNewDataOffline);
+            //     // const response = await AsyncStorage.getItem(asyncStorageKey);
+            //     // const parsedData = response ? JSON.parse(response) : []; //se não tiver nenhum registro, vem vazio
+
+            //     //cria uma nova lista com os dados que já estavam no storage e os novos dados
+            //     const newListData = [
+            //         ...storageNewDataOffline,
+            //         newData
+            //     ]
+
+            //     //salva a nova lista no storage
+            //     saveStorage(storageKeyNewDataOffline, newListData);
+            // }

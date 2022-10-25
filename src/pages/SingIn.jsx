@@ -6,6 +6,7 @@ import Constants from 'expo-constants';
 import { useAuth } from '../hooks/auth';
 import { Title } from '../components/Title';
 import { InputPassword } from '../components/InputPassword';
+import * as Crypto from 'expo-crypto';
 
 export function SignIn({ navigation }) {
 
@@ -17,7 +18,13 @@ export function SignIn({ navigation }) {
     async function handleSignIn() {
         if (email && password) {
             try {
-                await signIn(email, password);
+                const criptoPass = await Crypto.digestStringAsync(
+                    Crypto.CryptoDigestAlgorithm.SHA256,
+                    password
+                  );
+
+                await signIn(email, criptoPass);
+                // await signIn(email, password);
             } catch (error) {
                 console.log(error.message);
                 Alert.alert("Erro", "Falha ao realizar login");

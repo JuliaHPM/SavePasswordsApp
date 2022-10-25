@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-// import { Card } from 'react-native-paper';
+import CryptoES from "crypto-es";
+import { useAuth } from '../hooks/auth';
 
 export function CardLogins({ acesso, handleRemoveData }) { //service, user, password, id
     const [visibilityPassword, setVisibilityPassword] = useState(true);
+    const { user } = useAuth();
+
+    function decrypted (password){
+        const passDecripted = CryptoES.AES.decrypt(password, toString(user.password));
+        return passDecripted.toString(CryptoES.enc.Utf8)
+    } 
 
     return (
         <TouchableOpacity 
@@ -22,7 +29,7 @@ export function CardLogins({ acesso, handleRemoveData }) { //service, user, pass
 
                     <View style={styles.containerInfo}>
                         <Text style={styles.label}>Senha</Text>
-                        <TextInput editable={false} style={styles.data} value={acesso?.password} secureTextEntry={visibilityPassword}/>
+                        <TextInput editable={false} style={styles.data} value={decrypted(acesso?.password)} secureTextEntry={visibilityPassword}/>
                     </View>
                 </View>
 
@@ -42,7 +49,8 @@ const styles = StyleSheet.create({
         width: '90%',
         backgroundColor: '#FFF',
         marginVertical: 5,
-        padding: 15,
+        paddingVertical: 15,
+        paddingHorizontal:25,
         borderRadius: 5,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -66,6 +74,6 @@ const styles = StyleSheet.create({
     containerInfo: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 5
+        padding: 2
     }
 })

@@ -37,9 +37,10 @@ function AuthProvider({ children }) {
         ).then(() => {
             Alert.alert("Conta", "Cadastrado com sucesso!");
             console.log(data.user);
-            setUserAsync(data.user); //setar no storage e no state
+            // setUserAsync(data.user); //setar no storage e no state
         }).catch((error) => {
             console.log(error.message);
+            Alert.alert("Erro", "Falha ao realizar cadastro! Erro: ", error);
         })
         // .finally(()=> setIsLoading(false))
 
