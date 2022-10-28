@@ -7,13 +7,13 @@ Desenvolvida com React Native e Firebase.
 ## Project setup
 
 ```
-    npm install
+npm install
 ```
 
 ## Run
 
 ```
-    npm run dev
+npm run dev
 ```
 (run with tunnel)
 
@@ -21,8 +21,6 @@ Desenvolvida com React Native e Firebase.
 
 <!-- ### Login
 ![Image](./img/TelaHome.png) -->
-
-### Home
 
 <div >
 
