@@ -67,7 +67,10 @@ export default function Home() {
                     setStorageData(logins);
                     //salvar no async storage
                     saveStorage(storageKeyData, logins);
-                }).catch(error => console.log(error));
+                }).catch(error => {
+                    console.log(error)
+                   
+                    });
         } else{
             console.log("Não conectado");
         }

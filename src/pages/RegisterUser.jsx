@@ -26,11 +26,17 @@ export function RegisterUser({ navigation: { goBack } }) {
                 //   console.log('criptoPass: ', criptoPass);
 
                 // res is Base64 encoded key
-                await register(email, criptoPass)
-                .then(()=>{
-                    setEmail("");
-                    setPassword('');
-                });
+                await register(email, criptoPass).then(() => {
+                    Alert.alert("Conta", "Cadastrado com sucesso!");
+                    goBack();
+                    // console.log(data.user);
+                    // setUserAsync(data.user); //setar no storage e no state
+                }).catch((error) => {
+                    console.log(error.message);
+                    Alert.alert("Erro", "Falha ao realizar cadastro! Erro: ", error);
+                })
+                // navigation.navigate('RegisterUser')
+                // goBack();
             } catch (error) {
                 console.log(error.message);
                 // Alert.alert("Erro", "Falha ao realizar cadastro");

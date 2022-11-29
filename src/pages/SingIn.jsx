@@ -128,6 +128,9 @@ const styles = StyleSheet.create({
     },
     textCadastro: {
         fontWeight: 'bold',
+        textAlign: 'center',
+        padding:0,
+        margin:0
 
     }
 });

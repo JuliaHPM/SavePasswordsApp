@@ -15,6 +15,8 @@ function AuthProvider({ children }) {
     const [user, setUser] = useState('');
     const userStorageKey = "@savepasswordapp:user";
 
+    
+
     async function setUserAsync(user) {
         const userLogged = {
             id: user.uid,
@@ -30,18 +32,18 @@ function AuthProvider({ children }) {
     async function register(email, password) {
         // console.log(email, password);
 
-        const data = await createUserWithEmailAndPassword(
+        return await createUserWithEmailAndPassword(
             auth,
             email,
-            password
-        ).then(() => {
-            Alert.alert("Conta", "Cadastrado com sucesso!");
-            console.log(data.user);
-            // setUserAsync(data.user); //setar no storage e no state
-        }).catch((error) => {
-            console.log(error.message);
-            Alert.alert("Erro", "Falha ao realizar cadastro! Erro: ", error);
-        })
+            password)
+        // ).then(() => {
+        //     Alert.alert("Conta", "Cadastrado com sucesso!");
+        //     console.log(data.user);
+        //     // setUserAsync(data.user); //setar no storage e no state
+        // }).catch((error) => {
+        //     console.log(error.message);
+        //     Alert.alert("Erro", "Falha ao realizar cadastro! Erro: ", error);
+        // })
         // .finally(()=> setIsLoading(false))
 
     }
@@ -58,6 +60,7 @@ function AuthProvider({ children }) {
             setUserAsync(data.user);
         } catch (error) {
             console.log(error.message);
+            Alert.alert("Atenção", "Erro ao logar!")
         }
     }
 
