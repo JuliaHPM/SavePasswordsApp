@@ -23,8 +23,6 @@ npm run dev
 <!-- ### Login
 ![Image](./img/TelaHome.png) -->
 
-### Home
-
 <div >
 
 <!-- ![Image](./img/TelaHome.jpg|width=100px) -->
