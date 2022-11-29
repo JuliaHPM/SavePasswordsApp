@@ -24,18 +24,14 @@ npm run dev
 ![Image](./img/TelaHome.png) -->
 
 <div >
-
-<!-- ![Image](./img/TelaHome.jpg|width=100px) -->
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaLogin.jpg" alt="TelaLogin" title="TelaLogin" width="250" />
 
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaCadastro.jpg" alt="TelaCadastro" title="TelaCadastro" width="250" />
+</div>
 
+<div >
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaHome.jpg" alt="TelaHome" title="TelaHome" width="250" />
-
-<!-- ### Registro Login -->
-
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaRegistroLogin.jpg" alt="TelaRegistroLogin" title="TelaRegistroLogin" width="250" />
-
 </div>
 
 <!-- Links:
