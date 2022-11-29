@@ -29,7 +29,7 @@ npm run dev
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaCadastro.jpg" alt="TelaCadastro" title="TelaCadastro" width="250" />
 </div>
 
-<div style="text-align:center">
+<div align="center">
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaHome.jpg" alt="TelaHome" title="TelaHome" width="250" />
 <img src="https://github.com/JuliaHPM/SavePasswordsApp/raw/main/img/TelaRegistroLogin.jpg" alt="TelaRegistroLogin" title="TelaRegistroLogin" width="250" />
 </div>
